@@ -5,7 +5,7 @@ import {
   ScheduleDto,
   SchedulesDtoResponse,
 } from './dto/films.dto';
-import { FilmsRepository } from 'src/repository/films.repository';
+import { FilmsRepository } from '../repository/films.repository';
 
 
 @Injectable()

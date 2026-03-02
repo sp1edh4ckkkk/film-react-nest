@@ -1,4 +1,4 @@
-import { FilmsRepository } from 'src/repository/films.repository';
+import { FilmsRepository } from '../repository/films.repository';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PostOrderDto, TicketDto } from './dto/order.dto';
 import { randomUUID } from 'node:crypto';

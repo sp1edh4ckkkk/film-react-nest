@@ -1,8 +1,8 @@
-import { ConfigModule } from "@nestjs/config";
+import { ConfigModule } from '@nestjs/config';
 
 export const configProvider = {
     imports: [ConfigModule.forRoot()],
-    provide: "CONFIG",
+    provide: 'CONFIG',
     useValue: < AppConfig> {
         database: {
             driver: process.env.DATABASE_DRIVER,

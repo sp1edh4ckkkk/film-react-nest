@@ -1,12 +1,12 @@
-import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
-import { Film } from "./films.schema";
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Film } from './films.schema';
 
 
 @Injectable()
 export class FilmsRepository {
-  constructor(@InjectModel("film") private filmModel: Model<Film>) {}
+  constructor(@InjectModel('film') private filmModel: Model<Film>) {}
 
   async getFilms(): Promise<Film[]> {
     return this.filmModel.find().exec();
@@ -22,16 +22,15 @@ export class FilmsRepository {
       .findOneAndUpdate(
         {
           id: filmId,
-          "schedule.id": scheduleId
+          'schedule.id': scheduleId
         },
         {
           $addToSet: {
-            "schedule.$.taken": {
+            'schedule.$.taken': {
               $each: seats
             }
           }
         },
-      )
-      .exec();
+      ).exec();
   }
 }

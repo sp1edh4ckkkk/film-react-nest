@@ -7,7 +7,6 @@ import {
 } from './dto/films.dto';
 import { FilmsRepository } from '../repository/films.repository';
 
-
 @Injectable()
 export class FilmsService {
   constructor(private readonly filmsRepository: FilmsRepository) {}
@@ -16,7 +15,7 @@ export class FilmsService {
     return {
       total: films.length,
       items: films,
-    }
+    };
   }
 
   async getFilmScheduleById(id: string): Promise<SchedulesDtoResponse> {
@@ -33,6 +32,6 @@ export class FilmsService {
     return {
       total: schedules.length,
       items: schedules,
-    }
+    };
   }
 }

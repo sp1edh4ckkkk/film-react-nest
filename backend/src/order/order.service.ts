@@ -3,7 +3,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PostOrderDto, TicketDto } from './dto/order.dto';
 import { randomUUID } from 'node:crypto';
 
-
 @Injectable()
 export class OrderService {
   constructor(private readonly filmsRepository: FilmsRepository) {}
@@ -55,6 +54,6 @@ export class OrderService {
     return {
       total: saleTickets.length,
       items: saleTickets,
-    }
+    };
   }
 }

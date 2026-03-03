@@ -12,29 +12,27 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { FilmSchema } from './repository/films.schema';
 import { FilmsRepository } from './repository/films.repository';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      envFilePath: '.env'
+      envFilePath: '.env',
     }),
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, '..', 'public', 'content', 'afisha'),
-      serveRoot: '/content/afisha'
+      serveRoot: '/content/afisha',
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('DATABASE_URL')
+        uri: configService.get<string>('DATABASE_URL'),
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
-    MongooseModule.forFeature([{ name: 'film', schema: FilmSchema }])
+    MongooseModule.forFeature([{ name: 'film', schema: FilmSchema }]),
   ],
   controllers: [FilmsController, OrderController],
-  providers: [configProvider, FilmsService, OrderService, FilmsRepository]
+  providers: [configProvider, FilmsService, OrderService, FilmsRepository],
 })
-
 export class AppModule {}

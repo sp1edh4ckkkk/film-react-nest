@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Film } from './films.schema';
 
-
 @Injectable()
 export class FilmsRepository {
   constructor(@InjectModel('film') private filmModel: Model<Film>) {}
@@ -17,20 +16,25 @@ export class FilmsRepository {
     return film;
   }
 
-  async updateFilmTaken(filmId: string, scheduleId: string, seats: string[]): Promise<Film> {
+  async updateFilmTaken(
+    filmId: string,
+    scheduleId: string,
+    seats: string[],
+  ): Promise<Film> {
     return await this.filmModel
       .findOneAndUpdate(
         {
           id: filmId,
-          'schedule.id': scheduleId
+          'schedule.id': scheduleId,
         },
         {
           $addToSet: {
             'schedule.$.taken': {
-              $each: seats
-            }
-          }
+              $each: seats,
+            },
+          },
         },
-      ).exec();
+      )
+      .exec();
   }
 }

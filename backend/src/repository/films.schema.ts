@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-
 @Schema({ _id: false })
 export class Schedule {
   @Prop()
@@ -19,7 +18,6 @@ export class Schedule {
   @Prop([String])
   taken: string[];
 }
-
 
 @Schema()
 export class Film extends Document {

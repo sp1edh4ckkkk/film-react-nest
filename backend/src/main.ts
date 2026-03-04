@@ -5,7 +5,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('content/afisha');
+  app.setGlobalPrefix('api/afisha');
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors();
   await app.listen(3000);
